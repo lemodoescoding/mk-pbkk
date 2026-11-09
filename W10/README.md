@@ -135,6 +135,24 @@ Semua akun demo memakai password: **`password`**
 Pada halaman login juga tersedia tombol **Auto-Login Akun Demo** saat `APP_ENV=local`.
 Tombol tersebut otomatis nonaktif di production.
 
+## Halaman Login
+
+<img width="872" height="648" alt="image" src="https://github.com/user-attachments/assets/23154c8a-8cd1-4cf1-ab03-d88b26c0bc14" />
+
+## Login sebagai Admin (dapat edit, delete)
+
+<img width="1363" height="663" alt="image" src="https://github.com/user-attachments/assets/492f6310-a861-4d85-b88c-d19e38641b3d" />
+<img width="1365" height="660" alt="image" src="https://github.com/user-attachments/assets/cecdf077-734f-4b8b-8d94-1be9027799f8" />
+
+## Login sebagai Staf (tanpa delete data)
+
+<img width="1365" height="663" alt="image" src="https://github.com/user-attachments/assets/8f15ce07-5c9d-44f0-81e1-90d81a0b6da9" />
+<img width="1365" height="664" alt="image" src="https://github.com/user-attachments/assets/6ab09dc7-fdd7-4c9b-8512-ffeccb2f0713" />
+
+## Login sebagai Mahasiswa (no access to admin dashboard, redirected to beranda/homepage)
+
+<img width="1365" height="707" alt="image" src="https://github.com/user-attachments/assets/a263dce0-3516-4ef0-9d46-30333363ba04" />
+
 ## License
 
 MIT
