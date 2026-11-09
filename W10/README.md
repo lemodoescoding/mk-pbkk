@@ -1,5 +1,9 @@
 # Tugas W10 PBKK - Portal Akademik ITS
 
+| Name           | NRP        |
+| ---            | ---        | 
+| Ahmad Satrio Arrohman | 5025241061 |
+
 Aplikasi Laravel 13 untuk Tugas Mandiri Pertemuan 10: **Admin Dashboard & Role-Based Access Control**.
 
 Fitur utama:
@@ -130,95 +134,6 @@ Semua akun demo memakai password: **`password`**
 
 Pada halaman login juga tersedia tombol **Auto-Login Akun Demo** saat `APP_ENV=local`.
 Tombol tersebut otomatis nonaktif di production.
-
-## Role & Permission Matrix
-
-| Permission | Admin | Staf |
-|---|---:|---:|
-| `view-dashboard` | ✅ | ✅ |
-| `manage-mahasiswa` | ✅ | ✅ |
-| `manage-dosen` | ✅ | ✅ |
-| `manage-tugas` | ✅ | ✅ |
-| `hapus-data` | ✅ | ❌ |
-
-Pengamanan dilakukan berlapis:
-
-1. Route group Filament memakai middleware `auth` + `role:Admin|Staf`.
-2. Policy model menolak `delete`/`deleteAny` jika user tidak punya `hapus-data`.
-3. Tombol hapus di Blade dibungkus `@can('hapus-data')`.
-4. Route hapus memakai middleware `permission:hapus-data`.
-5. Controller memanggil `$this->authorize('delete', $mahasiswa)`.
-
-## Fitur Tugas Mandiri
-
-- [x] UI backoffice memakai Filament v5
-- [x] Autentikasi via Laravel Breeze
-- [x] Role/permission tersimpan di database melalui Spatie
-- [x] 3 widget statistik dinamis di dashboard
-- [x] Proteksi controller dan route dari bypass URL
-- [x] Role `Admin` dan `Staf` dengan hak berbeda
-- [x] Hapus data eksklusif untuk `Admin`
-
-## Tantangan Tambahan
-
-- [x] Pencarian multi-kolom (`nama` / `nrp`) memakai `when()`
-- [x] Filter departemen dan status aktif
-- [x] Pagination mempertahankan query string dengan `withQueryString()`
-- [x] Seeder Faker `id_ID` untuk puluhan data realistis
-- [x] Auto-login akun uji coba di halaman login (local only)
-
-## Screenshots
-
-| Halaman | Screenshot |
-|---|---|
-| Dashboard Admin | ![Dashboard Admin](docs/screenshots/01-dashboard-admin.png) |
-| Login + Auto-Login Demo | ![Login Demo](docs/screenshots/02-login-demo.png) |
-| Pencarian & Filter (Admin) | ![Pencarian Admin](docs/screenshots/03-pencarian-filter.png) |
-| CRUD Mahasiswa | ![CRUD Mahasiswa](docs/screenshots/04-crud-mahasiswa.png) |
-| Tampilan Staf (tanpa tombol hapus) | ![Staf tanpa hapus](docs/screenshots/05-staf-tanpa-hapus.png) |
-| Public Home | ![Public Home](docs/screenshots/06-public-home.png) |
-
-## Testing
-
-```bash
-php artisan test
-vendor/bin/pint --dirty
-```
-
-Test menggunakan database SQLite in-memory (`phpunit.xml`), sehingga tidak menyentuh
-`database/database.sqlite` milik aplikasi.
-
-## Project Structure
-
-```text
-app/
-  Filament/
-    Pages/PencarianMahasiswa.php
-    Resources/Dosens/
-    Resources/Mahasiswas/
-    Resources/Tugas/
-    Widgets/StatOverview.php
-  Http/Controllers/
-    Admin/MahasiswaController.php
-    Auth/DemoLoginController.php
-  Models/Mahasiswa.php
-  Models/Dosen.php
-  Models/Tugas.php
-  Policies/
-  Providers/Filament/AdminPanelProvider.php
-database/
-  factories/
-  seeders/
-resources/views/filament/pages/pencarian-mahasiswa.blade.php
-docs/screenshots/
-```
-
-## Security Notes
-
-- `.env`, `vendor/`, dan file SQLite tidak boleh di-commit.
-- Auto-login demo hanya aktif di `local`/`testing`.
-- Aksi hapus selalu divalidasi ulang di server, bukan hanya disembunyikan di UI.
-- Semua input pencarian memakai query builder sehingga aman dari SQL injection.
 
 ## License
 
